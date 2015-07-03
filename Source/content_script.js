@@ -22,14 +22,17 @@ function walk(node)
 			break;
 
 		case 3: // Text node
-			handleText(node);
+			if(node.parentElement.tagName.toLowerCase() != "script") {
+                handleText(node);
+            }
 			break;
 	}
 }
 
 function handleText(textNode) 
 {
-	var v = textNode.nodeValue;
+	var oldValue = textNode.nodeValue;
+	v = oldValue;
 
 	v = v.replace(/\bMicroServices\b/g, "MongolianClusterfucks");
 	v = v.replace(/\bMicro Services\b/g, "Mongolian Clusterfucks");
@@ -47,7 +50,27 @@ function handleText(textNode)
 	v = v.replace(/\bmicro-services\b/g, "mongolian-clusterfucks");
 
 	
-	textNode.nodeValue = v;
+	// avoid infinite series of DOM changes
+	if (v !== oldValue) {
+		textNode.nodeValue = v;
+	}
 }
 
+if (window.MutationObserver) {
+	var observer = new MutationObserver(function (mutations) {
+		Array.prototype.forEach.call(mutations, function (m) {
+			if (m.type === 'childList') {
+				walk(m.target);
+			} else if (m.target.nodeType === 3) {
+				handleText(m.target);
+			}
+		});
+	});
 
+	observer.observe(document.body, {
+		childList: true,
+		attributes: false,
+		characterData: true,
+		subtree: true
+	});
+}
