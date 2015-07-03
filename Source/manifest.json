@@ -1,0 +1,15 @@
+{
+	"manifest_version": 2,
+	"name": "MongolianClusterfuck",
+	"version": "1.0",
+	"description": "Replaces the text 'micro services' with 'mongolian clusterfucks'.",
+	"content_scripts": 
+	[
+		{
+			"matches": ["*://*/*"],
+			"js": ["content_script.js"],
+			"run_at": "document_end"
+		}
+	]
+}
+
