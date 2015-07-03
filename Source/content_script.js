@@ -41,6 +41,11 @@ function handleText(textNode)
 	v = v.replace(/\bMicroservice\b/g, "Mongolianclusterfuck");
 	v = v.replace(/\bmicroservice\b/g, "mongolianclusterfuck");
 	v = v.replace(/\bmicroService\b/g, "mongolianClusterfuck");
+	v = v.replace(/\bMicro-Service\b/g, "Mongolian-Clusterfuck");
+	v = v.replace(/\bMicro-Services\b/g, "Mongolian-Clusterfucks");
+	v = v.replace(/\bmicro-service\b/g, "mongolian-clusterfuck");
+	v = v.replace(/\bmicro-services\b/g, "mongolian-clusterfucks");
+
 	
 	textNode.nodeValue = v;
 }
