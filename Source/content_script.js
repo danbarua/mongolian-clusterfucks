@@ -48,6 +48,7 @@ function handleText(textNode)
 	v = v.replace(/\bMicro-Services\b/g, "Mongolian-Clusterfucks");
 	v = v.replace(/\bmicro-service\b/g, "mongolian-clusterfuck");
 	v = v.replace(/\bmicro-services\b/g, "mongolian-clusterfucks");
+  v = v.replace(/\bµService\b/g, "mongolianclusterfuck");
 
 	
 	// avoid infinite series of DOM changes
